@@ -35,3 +35,13 @@ volumes:
   influxdb_data:
   telegraf_config:
 ```
+```
+docker-compose up -d
+```
+```
+ufw allow 8086/tcp
+```
+
+```
+http://your_ip_address:8086
+```
