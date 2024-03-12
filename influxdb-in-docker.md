@@ -8,15 +8,13 @@ services:
     ports:
       - "8086:8086"
     environment:
-      - INFLUXDB_DB=telegraf
       - INFLUXDB_ADMIN_USER=admin
-      - INFLUXDB_ADMIN_PASSWORD=your_admin_password
-      - INFLUXDB_USER=telegraf
-      - INFLUXDB_USER_PASSWORD=your_telegraf_password
+      - INFLUXDB_ADMIN_PASSWORD=your_admin_pass
     volumes:
       - influxdb_data:/var/lib/influxdb
     networks:
       - grafana_network
+    restart: always
 
   telegraf:
     image: telegraf:latest
@@ -27,13 +25,15 @@ services:
       - influxdb
     networks:
       - grafana_network
+    restart: always
 
 networks:
   grafana_network:
-
+          
 volumes:
   influxdb_data:
   telegraf_config:
+
 ```
 ```
 docker-compose up -d
